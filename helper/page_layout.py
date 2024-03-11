@@ -45,7 +45,11 @@ class PageLayout:
                     unsafe_allow_html=True)
 
     @staticmethod
+    def setup_seperator():
+        st.markdown("<hr style='border: 0; border-top: 2px solid #e6ccff;'>", unsafe_allow_html=True)
+
+    @staticmethod
     def setup_footer():
-        st.markdown("---")
+        st.markdown("<hr style='border: 0; border-top: 2px solid #e6ccff;'>", unsafe_allow_html=True)
         st.markdown(
             "Please feel free to connect if you'd like to discuss further. I'm available and eager to chat! : [LinkedIn](https://www.linkedin.com/in/nishant-bahri/)")
