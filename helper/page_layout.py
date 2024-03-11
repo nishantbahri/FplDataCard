@@ -48,9 +48,4 @@ class PageLayout:
     def setup_footer():
         st.markdown("---")
         st.markdown(
-            "Want to connect and discuss please feel free to connect : [LinkedIn](https://www.linkedin.com/in/nishant-bahri/)")
-
-
-
-
-
+            "Please feel free to connect if you'd like to discuss further. I'm available and eager to chat! : [LinkedIn](https://www.linkedin.com/in/nishant-bahri/)")
