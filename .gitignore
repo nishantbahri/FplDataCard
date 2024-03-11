@@ -1,0 +1,29 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Dependency directories
+.venv/
+env/
+
+# Environment variables file (if used)
+.env
+
+# IDE files
+.idea/
+*.iml
+
+# Compiled Python files
+*.pyc
+
+# macOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
