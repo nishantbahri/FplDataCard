@@ -5,7 +5,7 @@ import requests
 from  helper.page_layout import PageLayout
 from  helper.helper import Helper
 from  helper.league_card import LeagueCard
-from PIL import Image
+from  helper.team_card import TeamCard
 
 
 def main():
@@ -21,10 +21,10 @@ def main():
             st.write("Enter your team ID and league ID. Get the following insights")
             app_intro = """
             This app allows you to get crucial insights that can help you be 1st in your mini leagues with just a few clicks.
-            * __Insights 1__: Insights 1.
-            * __Insights 2__: Insights 2.
-            * __Insights 3__: Insights 3.
-            * __Insights 4__: Insights 4. \n
+            * __Insights 1__: TODO.
+            * __Insights 2__: TODO 2.
+            * __Insights 3__: TODO 3.
+            * __Insights 4__: TODO 4. \n
             """
 
             st.write(app_intro)
@@ -39,9 +39,22 @@ def main():
 
         if st.button('Confirm'):
             if validated_team_id_input and validated_league_id_input is not None:
-                df_filtered,league_name = LeagueCard.process_data(team_id, league_id)
-                st.header(f'FPL LEAGUE \n * __{league_name}__')
+
+
+                gw, last_updated_at = TeamCard.event_status()
+                st.markdown(f'<p2 style="color:black"> <i>Current Gameweek is {gw}, Stats last updated at {last_updated_at}</i> </p2>',
+                            unsafe_allow_html=True)
+                PageLayout.setup_seperator()
+
+                df_filtered,league_name,team_name = LeagueCard.process_data(team_id, league_id)
+                st.markdown(f'<h2>FPL League Insights</h2> <h3 style="color:purple"> <i>{league_name}</i> </h3>', unsafe_allow_html=True)
+
                 st.write(df_filtered)
+                PageLayout.setup_seperator()
+
+
+                st.markdown(f'<h2>Team Insights</h2> <h3 style="color:purple"> <i>{team_name}</i> </h3>', unsafe_allow_html=True)
+                TeamCard.process_data(team_id, league_id, gw, last_updated_at)
                 PageLayout.setup_footer()
             else:
                 st.error("Please enter a valid integer.")
